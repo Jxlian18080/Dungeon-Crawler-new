@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using NaughtyCharacter;
+using System.Collections;
 
 namespace Retro.ThirdPersonCharacter
 {
@@ -9,7 +10,7 @@ namespace Retro.ThirdPersonCharacter
         private const string specialAttackTriggerName = "Ability";
 
         [SerializeField] private PlayerWeapon[] _playerWeapons;
-        private PlayerWeapon _playerWeapon;
+        private PlayerWeapon attackWeapon;
 
         private Animator _animator;
         private PlayerInput _playerInput;
@@ -32,35 +33,31 @@ namespace Retro.ThirdPersonCharacter
         {
             if (_playerInput.AttackInput && !AttackInProgress)
             {
-                Attack(attackTriggerName, 0);
+                StartCoroutine(Attack(attackTriggerName, 0, 0.2f));
             }
             else if (_playerInput.SpecialAttackInput && !AttackInProgress)
             {
-                Attack(specialAttackTriggerName, 1);
+                StartCoroutine(Attack(specialAttackTriggerName, 1, 1f));
             }
         }
         
-        private void Attack(string attackTriggerName, short weaponIndex)
+        private IEnumerator Attack(string attackTriggerName, short weaponIndex, float delay)
         {
             _animator.SetTrigger(attackTriggerName);
-            SetAttackWeapon(weaponIndex);
-        }
-
-        private void SetAttackWeapon(short weapon) 
-        {
-            _playerWeapon = _playerWeapons[weapon];
+            yield return new WaitForSeconds(delay);
+            attackWeapon = _playerWeapons[weaponIndex];
+            attackWeapon.EnableCollider();
         }
 
         private void SetAttackStart()
         {
             AttackInProgress = true;
-            _playerWeapon.EnableCollider();
         }
 
         private void SetAttackEnd()
         {
             AttackInProgress = false;
-            _playerWeapon.DisableCollider();
+            attackWeapon.DisableCollider();
         }
     }
 }

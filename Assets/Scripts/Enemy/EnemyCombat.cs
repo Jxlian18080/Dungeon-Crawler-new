@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
 {
-    [SerializeField] PlayerCombat _playerCombat;
+    private PlayerCombat _playerCombat;
     private Animator _animator;
     private EnemyHealth _enemyHealth;
     private EnemyNavMeshAgent _enemyNavMeshAgent;
     public bool GotHit { get; private set; } = false;
     private bool isAnimationOver = false;
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _enemyHealth = GetComponent<EnemyHealth>();
         _enemyNavMeshAgent = GetComponent<EnemyNavMeshAgent>();
+    }
+
+    private void Start()
+    {
+        _playerCombat = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<PlayerCombat>();
     }
 
     public void EnemyGotHit(string playerWeaponTag, int damage)
@@ -30,11 +35,14 @@ public class EnemyCombat : MonoBehaviour
             Die();
             return;
         }
-        if (playerWeaponTag.Equals("SWORD"))
+        else if (playerWeaponTag.Equals("SWORD"))
         {
-            GetComponent<Animator>().SetTrigger("Hit");
+            GetComponent<Animator>().SetTrigger("SwordHit");
         }
-
+        else if (playerWeaponTag.Equals("DAGGER"))
+        {
+            GetComponent<Animator>().SetTrigger("DaggerHit");
+        }
     }
 
     private IEnumerator ResetGotHit()
@@ -45,11 +53,10 @@ public class EnemyCombat : MonoBehaviour
 
     public void Die()
     {
-        _animator.SetInteger("DeathAnimatorIndex", Random.Range(0, 4));
+        _animator.SetInteger("DeathAnimatorIndex", Random.Range(1, 5));
         _animator.SetTrigger("Die");
         _enemyNavMeshAgent.StopEnemyMovement();
         StartCoroutine(DestroyEnemyObject());
-
     }
 
     private IEnumerator DestroyEnemyObject()

@@ -12,11 +12,12 @@ public class EnemyNavMeshAgent : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-    }
-
-    private void Start() {
         _enemyCombat = GetComponent<EnemyCombat>();
         _enemyHealth = GetComponent<EnemyHealth>();
+    }
+
+    private void Start()
+    {
         target = GameObject.FindGameObjectWithTag("PLAYER").transform;
     }
 

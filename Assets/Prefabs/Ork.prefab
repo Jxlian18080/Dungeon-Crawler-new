@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0966857b18a2e4d813bf4fae87a00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerCombat: {fileID: 0}
 --- !u!114 &143371570470520115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4052c728d629234aa04fecc4df868cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!136 &3063145202251837513
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -169,7 +167,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0

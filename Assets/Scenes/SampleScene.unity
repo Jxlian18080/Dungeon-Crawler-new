@@ -1315,14 +1315,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 559870529515720729, guid: c76bf28646eed18498e452fe5f7f83c6, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 2079870191}
-    - target: {fileID: 4043209982771202202, guid: c76bf28646eed18498e452fe5f7f83c6, type: 3}
-      propertyPath: _playerCombat
-      value: 
-      objectReference: {fileID: 1709352570865400060}
     - target: {fileID: 4512791134767880543, guid: c76bf28646eed18498e452fe5f7f83c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -1429,17 +1421,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ed8ad0d486567c4aaab66765b750ce7, type: 3}
---- !u!114 &1709352570865400060 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6826950358725933955, guid: 9ed8ad0d486567c4aaab66765b750ce7, type: 3}
-  m_PrefabInstance: {fileID: 1709352570865400059}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1c4f38d5f851e40ad00b1c797bb74a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7877605751266250493
 PrefabInstance:
   m_ObjectHideFlags: 0

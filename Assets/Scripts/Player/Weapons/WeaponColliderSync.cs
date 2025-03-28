@@ -6,7 +6,6 @@ public class WeaponColliderSync : MonoBehaviour {
     private Transform bone;
 
     void Start() {
-        // swordBone = GameObject.Find("sword_stretch_l")?.transform;
         bone = GameObject.Find(objectToFind)?.transform;
 
         if (bone == null) {
