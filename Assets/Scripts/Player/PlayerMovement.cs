@@ -14,7 +14,6 @@ namespace Retro.ThirdPersonCharacter
         private float decelerationOnStop = 0.00f;
         private float rotationSpeed = 10f;
         private float dampTime = 0.1f;
-        private Vector3 newPosition;
 
         private void Awake()
         {
@@ -50,7 +49,7 @@ namespace Retro.ThirdPersonCharacter
 
             RotatePlayer(moveDirection);
 
-            newPosition = currentPosition + (moveDirection * (moveSpeed * Time.fixedDeltaTime));
+            Vector3 newPosition = currentPosition + (moveDirection * (moveSpeed * Time.fixedDeltaTime));
 
             _rigidbody.MovePosition(newPosition);
 
